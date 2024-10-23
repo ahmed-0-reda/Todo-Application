@@ -1,38 +1,150 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 100%;
+  height: 100dvh;
+  position: relative;
+  background-image: url(../public/backG.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: "mainFont";
+  overflow: auto;
+}
+.App::before {
+  content: "";
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-attachment: fixed;
+  background: #2a2a2a70;
+}
+.to-do-list-container {
+  z-index: 3;
+  text-align: center;
+  border-radius: 20px 0px 0px 20px;
+  background: url(../public/backG.jpg);
+  background-position: center;
+  background-attachment: fixed;
+  overflow: auto;
+  max-height: 80vh;
+}
+.to-do-list-container > :first-child {
+  background: transparent;
+  box-shadow: none;
+  color: #fff;
+  padding: 10px 0;
+  direction: rtl;
+}
+.main-todo-card {
+  border: 1px solid #fff;
+  margin: 30px 0;
+  color: #fff;
+  transition: all 0.3s !important;
+  padding: 0 10px 0 0;
+}
+.main-todo-card:hover {
+  box-shadow: 2px 4px 6px 0px #505050 !important;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.todo-card-content {
+  padding: 5px !important;
+  font-size: 10px !important;
+}
+.title {
+  font-weight: 800;
+  background-image: linear-gradient(62deg, #42476d33, #42476d);
+  background-clip: text;
+  color: transparent;
+  font-size: 40px !important;
+  user-select: none;
+}
+.ToggleButtonGroup {
+  direction: ltr;
+  margin-top: "30px";
+  margin-top: 30px;
+  background-color: rgba(255, 243, 173, 0.55);
+  font-size: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.grid-child-icon {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 10px;
+}
+.btn-icons {
+  border: none !important;
+  padding: 5px !important;
+  font-size: 15px !important;
+  transition: all 0.5s !important;
+}
+.add-btn-click {
+  display: flex;
+  align-items: center;
+}
+.add-btn-click > :first-child {
+  width: 100%;
+  height: 50px;
+}
+.add-todo-input-section {
+  flex: 1;
+}
+.add-todo-input-section > div {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.add-todo-input-section > :first-of-type
+
+/* scroll bar >>>>>>>>>>>>>>>>>>>>>>>>> */
+::-webkit-scrollbar {
+  width: 5px;
+  position: relative;
+}
+html::-webkit-scrollbar {
+  width: 16px;
+  height: 106px !important;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #42476df0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* === scroll bar === */
+
+@media screen and (max-width: 767px) {
+  .to-do-list-container {
+    width: 350px !important;
+    font-size: 20px;
   }
-  to {
-    transform: rotate(360deg);
+  .adding-input-field {
+    flex-direction: column !important;
+    /* justify-content: center !important; */
+    align-items: center !important;
+    display: flex;
   }
+  .add-btn-click {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .to-do-list-container {
+    width: 500px !important;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .to-do-list-container {
+    width: 750px !important;
+  }
+}
+@font-face {
+  font-family: "mainFont";
+  src: url(../public/fonts/Fustat-ExtraBold.ttf);
+  font-weight: 800;
 }

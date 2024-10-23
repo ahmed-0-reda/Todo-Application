@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ToDoList from "./components/ToDoList";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-function App() {
+import TodoReducer from "./contextFile/TodoContext";
+import { ToastProvider } from "./contextFile/ToastContext";
+
+// ==============
+
+export default function App() {
+  const myTheme = createTheme({
+    typography: {
+      fontFamily: ["mainFont"],
+    },
+    palette: {
+      primary: {
+        main: "#42476d",
+        toggle: "#ffe4b596",
+        icons: "#5d54a4",
+        iconsBg: "#b4ffd8",
+        completeTodo: "",
+        inputTodo: "#ffffff40",
+      },
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={myTheme}>
+      <TodoReducer>
+        <ToastProvider>
+          <div className="App" style={{ color: "#fff" }}>
+            <ToDoList />
+          </div>
+        </ToastProvider>
+      </TodoReducer>
+    </ThemeProvider>
   );
 }
-
-export default App;
